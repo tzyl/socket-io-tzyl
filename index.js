@@ -28,7 +28,7 @@ io.on('connection', function(socket){
             clients[socket.id] = {socket: socket, nickname: nickname};
             console.log(clients);
             socket.emit('login successful');
-            io.emit('user joined', {nickname: nickname, user_list: getNicknames(clients)});
+            io.emit('user joined', {nickname: nickname, userList: getNicknames(clients)});
         }
     });
 
@@ -46,7 +46,7 @@ io.on('connection', function(socket){
         if (addedUser) {
             delete clients[socket.id];
             console.log(clients);
-            socket.broadcast.emit('user left', {nickname: nickname, user_list: getNicknames(clients)});
+            socket.broadcast.emit('user left', {nickname: nickname, userList: getNicknames(clients)});
         }
         // io.emit('chat message', clients[socket.id].nickname + ' disconnected');
         // delete clients[socket.id];

@@ -26,15 +26,49 @@ body {
 }
 
 .login-form {
+    width: 200px;
+    margin: 20px auto 20px auto;
+}
+
+.login-alert {
+    width: 450px;
     margin-left: auto;
     margin-right: auto;
-    width: 200px;
 }
 
 .chat-room {
     display: none;
     height: 100%;
     width: 100%;
+}
+
+.user-list {
+    float: right;
+    width: 200px;
+    border: 1px solid black;
+}
+
+.messages-container {
+    height: 100%;
+    width: 100%;
+    padding-bottom: 38px;
+}
+
+#messages {
+    height: 100%;
+    list-style-type: none;
+    overflow-y: scroll;
+    margin: 0;
+    padding: 0;
+}
+
+#messages > li {
+    padding: 5px 10px;
+    white-space: pre-wrap;
+}
+
+#messages > li:nth-child(odd) {
+    background: #eee;
 }
 
 .message-form {
@@ -57,27 +91,4 @@ body {
     background: rgb(130, 224, 255);
     border: none;
     padding: 10px;
-}
-
-.messages-container {
-    height: 100%;
-    width: 100%;
-    padding-bottom: 38px;
-}
-
-#messages {
-    height: 100%;
-    list-style-type: none;
-    overflow-y: scroll;
-    margin: 0;
-    padding: 0;
-}
-
-#messages li {
-    padding: 5px 10px;
-    white-space: pre-wrap;
-}
-
-#messages li:nth-child(odd) {
-    background: #eee;
 }

@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Socket.IO chat example</title>
+        <link rel="stylesheet" href="bootstrap.min.css">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
@@ -9,22 +10,34 @@
             <div class="login-screen-inner">
                 <h1>Choose your nickname!</h1>
                 <form class="login-form">
-                    <input placeholder="Nickname" /><button>Log in</button>
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Nickname" required />
+                        <span class="input-group-btn">
+                            <button class="btn btn-success">Log in</button>
+                        </span>
+                    </div>
                 </form>
+                <div class="login-alert alert alert-danger alert-dismissible fade" role="alert">
+                    <button type="button" class="close" data-hide="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>Login failed!</strong> Nickname already taken, please choose another.
+                </div>
             </div>
         </div>
 
         <div class="chat-room">
             <div class="messages-container">
-                <ul id="messages"></ul>
+                <ul id="messages">
+                    <div class="user-list"></div>
+                </ul>
             </div>
             <form class="message-form">
-                <input id="message-input" placeholder="Type your message here..." /><button>Send</button>
+                <input id="message-input" type="text" placeholder="Type your message here..." /><button>Send</button>
             </form>
         </div>
 
         <script src="/socket.io/socket.io.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="bootstrap.min.js"></script>
         <script src="main.js"></script>
     </body>
 </html>

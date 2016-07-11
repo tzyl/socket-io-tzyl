@@ -10,15 +10,17 @@ socket.on('login successful', function() {
 });
 
 socket.on('invalid nickname', function() {
-    console.log('Nickname already taken!');
-})
+    $('.login-alert').addClass('in');
+});
 
 socket.on('user joined', function(data) {
     addMsg(data.nickname + ' joined');
+    updateUserList(data.userList);
 });
 
 socket.on('user left', function(data) {
     addMsg(data.nickname + ' left');
+    updateUserList(data.userList);
 });
 
 // Receive message from server.
@@ -61,3 +63,22 @@ function addMsg(msg) {
         // $('html, body').animate({ scrollTop: document.body.scrollHeight - window.innerHeight }, 'fast');
     }
 }
+
+// Update list of nicknames of current connected users.
+function updateUserList(nicknames) {
+    var $userListDiv = $('.user-list');
+    var $userList;
+    $userListDiv.empty();
+    $userListDiv.append('<span class="user-count">' + nicknames.length + ' users currently connected</span>');
+    $userList = $('<ul></ul>').appendTo($userListDiv);
+    for (var i = 0; i < nicknames.length; i++) {
+        $userList.append('<li>' + nicknames[i] + '</li>');
+    }
+}
+
+// Function to hide alert on clicking close button.
+$(function(){
+    $("[data-hide]").on("click", function(){
+        $(this).closest("." + $(this).attr("data-hide")).removeClass('in');
+    });
+});
