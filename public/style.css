@@ -40,18 +40,21 @@ body {
     display: none;
     height: 100%;
     width: 100%;
+    font-size: 16px;
 }
 
 .user-list {
     float: right;
-    width: 200px;
+    width: 300px;
+    padding: 15px;
+    background: white;
     border: 1px solid black;
 }
 
 .messages-container {
     height: 100%;
     width: 100%;
-    padding-bottom: 38px;
+    padding-bottom: 44px;
 }
 
 #messages {
@@ -60,6 +63,7 @@ body {
     overflow-y: scroll;
     margin: 0;
     padding: 0;
+    word-break: break-all;
 }
 
 #messages > li {
@@ -67,8 +71,15 @@ body {
     white-space: pre-wrap;
 }
 
-#messages > li:nth-child(odd) {
+/*#messages > li:nth-child(odd) {
     background: #eee;
+}*/
+
+.log {
+    color: gray;
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
 }
 
 .message-form {

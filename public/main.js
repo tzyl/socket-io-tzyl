@@ -14,12 +14,12 @@ socket.on('invalid nickname', function() {
 });
 
 socket.on('user joined', function(data) {
-    addMsg(data.nickname + ' joined');
+    addLog(data.nickname + ' joined');
     updateUserList(data.userList);
 });
 
 socket.on('user left', function(data) {
-    addMsg(data.nickname + ' left');
+    addLog(data.nickname + ' left');
     updateUserList(data.userList);
 });
 
@@ -57,6 +57,17 @@ $('.message-form').submit(function() {
 function addMsg(msg) {
     isScrolledToBottom = $('#messages')[0].scrollHeight - $('#messages').scrollTop() === $('#messages').innerHeight();
     $('#messages').append($('<li>').text(msg));
+    if (isScrolledToBottom) {
+        $('#messages').scrollTop($('#messages')[0].scrollHeight - $('#messages').innerHeight());
+        // document.body.scrollTop = document.body.scrollHeight - window.innerHeight;
+        // $('html, body').animate({ scrollTop: document.body.scrollHeight - window.innerHeight }, 'fast');
+    }
+}
+
+// Adds log to client's screen and also scrolls to bottom if the page was already at the bottom.
+function addLog(msg) {
+    isScrolledToBottom = $('#messages')[0].scrollHeight - $('#messages').scrollTop() === $('#messages').innerHeight();
+    $('#messages').append($('<li class="log">').text(msg));
     if (isScrolledToBottom) {
         $('#messages').scrollTop($('#messages')[0].scrollHeight - $('#messages').innerHeight());
         // document.body.scrollTop = document.body.scrollHeight - window.innerHeight;
